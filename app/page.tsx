@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useRef, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { FaPlay, FaPause, FaUniversity, FaWallet } from 'react-icons/fa';
@@ -170,36 +170,46 @@ const GiftItem = ({ icon, title, details, accountNumber }: { icon: React.ReactNo
 
 
 // Main Component
-export default function LuxuryMaroonInvitation() {
+function PageContent() {
   const searchParams = useSearchParams();
-  const [isOpened, setIsOpened] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
-
   const guestName = useMemo(() => {
     const toParam = searchParams.get('to');
     return toParam ? decodeURIComponent(toParam) : 'Tamu Kehormatan';
   }, [searchParams]);
 
+  const [isOpened, setIsOpened] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const handleOpenInvitation = () => {
     setIsOpened(true);
-    setIsPlaying(true);
+    if (audioRef.current) {
+      audioRef.current.play().catch(e => console.error("Audio play failed:", e));
+      setIsPlaying(true);
+    }
   };
 
   const toggleAudio = () => {
-    setIsPlaying(!isPlaying);
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(e => console.error("Audio play failed:", e));
+      }
+      setIsPlaying(!isPlaying);
+    }
   };
 
   useEffect(() => {
     if (isOpened && audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.play().catch(e => console.error("Audio play failed:", e));
-      } else {
-        audioRef.current.pause();
-      }
+        if (isPlaying) {
+            audioRef.current.play().catch(e => console.error("Audio play failed on state change:", e));
+        } else {
+            audioRef.current.pause();
+        }
     }
-  }, [isOpened, isPlaying]);
-  
+  }, [isPlaying, isOpened]);
+
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeInOut" } }
@@ -380,5 +390,13 @@ export default function LuxuryMaroonInvitation() {
         </div>
       </motion.div>
     </>
+  );
+}
+
+export default function LuxuryMaroonInvitation() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen bg-neutral-900 text-white">Loading...</div>}>
+      <PageContent />
+    </Suspense>
   );
 }
