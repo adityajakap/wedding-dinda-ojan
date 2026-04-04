@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useRef, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 import { FaPlay, FaPause, FaUniversity, FaWallet } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
@@ -210,12 +210,12 @@ function PageContent() {
     }
   }, [isPlaying, isOpened]);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeInOut" } }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
