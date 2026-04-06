@@ -234,7 +234,7 @@ function PageContent() {
               alt="Adinda & Fauzan"
               layout="fill"
               objectFit="cover"
-              className="opacity-40"
+              className="opacity-50"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
           </div>
