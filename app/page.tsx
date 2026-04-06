@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useRef, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
-import { FaPlay, FaPause, FaUniversity, FaWallet } from 'react-icons/fa';
+import { FaPlay, FaPause, FaUniversity, FaBox } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 
@@ -156,7 +156,7 @@ const GiftItem = ({ icon, title, details, accountNumber }: { icon: React.ReactNo
     return (
         <div className="bg-white p-4 rounded-xl shadow-sm border border-rose-100 flex items-center space-x-4">
             <div className="text-3xl text-rose-800">{icon}</div>
-            <div className="flex-grow">
+            <div className="flex-grow text-left">
                 <h4 className="font-bold text-rose-900">{title}</h4>
                 <p className="text-sm text-stone-600">{details}</p>
                 <p className="text-sm font-semibold text-stone-800">{accountNumber}</p>
@@ -167,7 +167,6 @@ const GiftItem = ({ icon, title, details, accountNumber }: { icon: React.ReactNo
         </div>
     );
 };
-
 
 // Main Component
 function PageContent() {
@@ -298,7 +297,7 @@ function PageContent() {
           <AnimatedSection>
              <div className="relative w-full max-w-xs mx-auto rounded-2xl shadow-2xl overflow-hidden border-8 border-white">
                 <Image
-                  src="/prewed.jpg"
+                  src="/1000950268.jpg"
                   alt="Adinda & Fauzan Pre-wedding"
                   width={400}
                   height={600}
@@ -376,6 +375,27 @@ function PageContent() {
           <AnimatedSection>
             <h2 className="text-2xl font-serif text-rose-900 font-bold mb-8 border-b-2 border-amber-500 inline-block pb-2">Buku Tamu & Ucapan</h2>
             <GuestBook guestName={guestName} />
+          </AnimatedSection>
+
+          <AnimatedSection className="bg-rose-900/5">
+            <h2 className="text-2xl font-serif text-rose-900 font-bold mb-8 border-b-2 border-amber-500 inline-block pb-2">Kirim Hadiah</h2>
+            <p className="text-sm text-stone-600 mb-8 max-w-sm mx-auto">
+              Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika Anda ingin memberikan tanda kasih, kami dengan senang hati menerimanya.
+            </p>
+            <div className="space-y-4 max-w-sm mx-auto">
+              <GiftItem 
+                icon={<FaUniversity />}
+                title="Bank BCA"
+                details="a.n Adinda Fajrie"
+                accountNumber="3480375571 "
+              />
+              <GiftItem 
+                icon={<FaBox />}
+                title="Kirim Hadiah"
+                details="Jl. Gatotmangkupraja No. 11, Panumbangan, Cugenang, Cianjur"
+                accountNumber="Penerima: Adinda & Fauzan"
+              />
+            </div>
           </AnimatedSection>
 
           <motion.section 
