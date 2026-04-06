@@ -232,31 +232,40 @@ function PageContent() {
             <Image
               src="/1000950288.jpg"
               alt="Adinda & Fauzan"
-              layout="fill"
-              objectFit="cover"
-              className="opacity-50"
+              fill
+              className="object-cover object-[center_20%] opacity-40"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
           </div>
           <motion.div 
-            className="relative w-full max-w-md min-h-screen text-white flex flex-col items-center justify-center p-8 text-center"
+            className="relative w-full max-w-md min-h-screen text-white flex flex-col items-center justify-between p-8 py-20"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.div className="z-10 space-y-6" variants={{ visible: { transition: { staggerChildren: 0.3 } } }}>
-              <motion.p variants={itemVariants} className="text-lg tracking-widest text-amber-200 uppercase font-light">The Wedding Of</motion.p>
-              <motion.h1 variants={itemVariants} className="text-6xl font-serif text-amber-300" style={{ textShadow: '0 2px 15px rgba(252, 211, 77, 0.5)' }}>Adinda & Fauzan</motion.h1>
-              <motion.p variants={itemVariants} className="text-xl font-light tracking-wide text-amber-100">12 April 2026</motion.p>
-              <motion.div variants={itemVariants} className="mt-12 p-6 border border-amber-500/30 rounded-2xl bg-black/30 backdrop-blur-sm">
-                <p className="text-sm text-gray-300 mb-2">Yth. Bapak/Ibu/Saudara/i:</p>
-                <p className="text-2xl font-semibold text-amber-300 capitalize">{guestName}</p>
+            <motion.div 
+              variants={itemVariants} 
+              className="z-10 text-left self-start"
+            >
+              <p className="text-lg tracking-wider text-gray-200 font-light">The Wedding Of</p>
+              <h1 className="text-5xl font-ivymode text-white mt-2" style={{ textShadow: '0 3px 10px rgba(0, 0, 0, 0.5)' }}>Adinda & Fauzan</h1>
+            </motion.div>
+
+            <motion.div 
+              className="z-10 text-center"
+              variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+            >
+              <motion.div variants={itemVariants}>
+                <p className="text-base text-gray-300">Kepada Yth.</p>
+                <p className="text-xl font-semibold text-white mt-1">{guestName}</p>
               </motion.div>
+
               <motion.button 
                 variants={itemVariants}
                 onClick={handleOpenInvitation}
-                className="mt-10 px-8 py-3 bg-amber-600 hover:bg-amber-500 text-rose-950 font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(217,119,6,0.7)] transform hover:scale-105"
-                whileHover={{ scale: 1.1 }}
+                className="mt-8 px-8 py-3 bg-white/90 hover:bg-white text-black font-bold rounded-full transition-all duration-300 shadow-2xl shadow-white/20 transform hover:scale-105"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Buka Undangan
@@ -295,11 +304,11 @@ function PageContent() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/floral-motif.png')]"></div>
-            <h2 className="text-3xl font-serif text-amber-400 mb-6">Dua Hati Dipersatukan Dalam Cinta</h2>
+            <h2 className="text-3xl font-serif text-gray-100 mb-6">Dua Hati Dipersatukan Dalam Cinta</h2>
             <p className="text-sm font-light leading-relaxed italic text-amber-100/80 max-w-xs mx-auto">
               &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri agar kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.&rdquo;
               <br/><br/>
-              <span className="font-semibold text-amber-400">(QS. Ar-Rum: 21)</span>
+              <span className="font-semibold text-gray-100">(QS. Ar-Rum: 21)</span>
             </p>
           </motion.section>
 
@@ -413,7 +422,7 @@ function PageContent() {
             <p className="text-sm leading-relaxed mb-6 font-light">
               Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do&rsquo;a restu kepada kami.
             </p>
-            <h2 className="text-3xl font-serif text-amber-400 mt-8">Adinda & Fauzan</h2>
+            <h2 className="text-3xl font-serif text-white mt-8">Adinda & Fauzan</h2>
           </motion.section>
 
         </div>
