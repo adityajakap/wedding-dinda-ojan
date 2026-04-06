@@ -223,30 +223,39 @@ function PageContent() {
     return (
       <AnimatePresence>
         <motion.div 
-          className="flex items-center justify-center min-h-screen bg-neutral-900"
+          className="flex items-center justify-center min-h-screen bg-black"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
+          <div className="absolute inset-0 w-full h-full">
+            <Image
+              src="/1000950288.jpg"
+              alt="Adinda & Fauzan"
+              layout="fill"
+              objectFit="cover"
+              className="opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+          </div>
           <motion.div 
-            className="relative w-full max-w-md min-h-screen bg-rose-950 text-white flex flex-col items-center justify-center p-8 overflow-hidden shadow-2xl"
+            className="relative w-full max-w-md min-h-screen text-white flex flex-col items-center justify-center p-8 text-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
-            <motion.div className="z-10 text-center space-y-6" variants={{ visible: { transition: { staggerChildren: 0.2 } } }}>
-              <motion.p variants={itemVariants} className="text-sm tracking-widest text-amber-200 uppercase">The Wedding Of</motion.p>
-              <motion.h1 variants={itemVariants} className="text-5xl font-serif text-amber-400 mb-2">Adinda & Fauzan</motion.h1>
-              <motion.p variants={itemVariants} className="text-lg font-light tracking-wide mb-8">12 April 2026</motion.p>
-              <motion.div variants={itemVariants} className="mt-12 p-6 border border-amber-500/30 rounded-2xl bg-black/20 backdrop-blur-sm">
+            <motion.div className="z-10 space-y-6" variants={{ visible: { transition: { staggerChildren: 0.3 } } }}>
+              <motion.p variants={itemVariants} className="text-lg tracking-widest text-amber-200 uppercase font-light">The Wedding Of</motion.p>
+              <motion.h1 variants={itemVariants} className="text-6xl font-serif text-amber-300" style={{ textShadow: '0 2px 15px rgba(252, 211, 77, 0.5)' }}>Adinda & Fauzan</motion.h1>
+              <motion.p variants={itemVariants} className="text-xl font-light tracking-wide text-amber-100">12 April 2026</motion.p>
+              <motion.div variants={itemVariants} className="mt-12 p-6 border border-amber-500/30 rounded-2xl bg-black/30 backdrop-blur-sm">
                 <p className="text-sm text-gray-300 mb-2">Yth. Bapak/Ibu/Saudara/i:</p>
                 <p className="text-2xl font-semibold text-amber-300 capitalize">{guestName}</p>
               </motion.div>
               <motion.button 
                 variants={itemVariants}
                 onClick={handleOpenInvitation}
-                className="mt-10 px-8 py-3 bg-amber-600 hover:bg-amber-500 text-rose-950 font-bold rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.5)] transform hover:scale-105"
+                className="mt-10 px-8 py-3 bg-amber-600 hover:bg-amber-500 text-rose-950 font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(217,119,6,0.7)] transform hover:scale-105"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
